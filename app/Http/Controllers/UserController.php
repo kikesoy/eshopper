@@ -150,7 +150,7 @@ class UserController extends Controller
 
     $permission = Permission::where('name', $permissionParam)->first();
 
-    $role->attachPermission($permission);
+    $role->givePermissionTo($permission);
 
     return $role->permissions;
   }

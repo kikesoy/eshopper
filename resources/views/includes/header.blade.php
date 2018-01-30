@@ -51,8 +51,11 @@
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>-->
 								@if(Auth::check())
-								@role('Administrador')
+								@role('admin')
 								<li><a href="{{route('home.index')}}"> Panel de Administrador</a></li>
+								@endrole
+								@role('usuario')
+								<li><a href="{{route('home.index')}}">Creacion de Post</a></li>
 								@endrole
 								<li><a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -92,11 +95,6 @@
 								<li><a href="{{route('blogs')}}">Blog</a></li>
 								<li><a href="{{route('contact-us')}}">Contacto</a></li>
 							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" name="search" value="{{ @$search }}"placeholder="Search"/>
 						</div>
 					</div>
 				</div>

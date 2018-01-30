@@ -14,7 +14,9 @@
     <strong>Info!</strong> {{ session('status') }}
     </div>
     @endif
+    @role('admin')
     <table class="table table-bordered">
+    
     <tr>
         <th>#</th>
         <th>Titulo</th>
@@ -23,7 +25,9 @@
         <th>Imagen</th>
         <th colspan="2">Acción</th>
     </tr>
+    @endrole
     @foreach($posts as $post)
+    @role('admin')
     <tr>
         <td>{{ $post->id }}</td>
         <td>{{ $post->title }}</td>
@@ -31,6 +35,7 @@
 		<td>{{ str_limit($post->content, $limit = 250, $end = '...') }}</td>
         <td><img src="{{ asset('/image/post/'.$post->image_name) }}" alt="" class="img-responsive"></td>
         <td>
+        
             <a href="{{ route('blog.edit', $post->id) }}" class="btn btn-primary">
                 <i class="glyphicon glyphicon-edit"></i>
             </a>
@@ -39,6 +44,7 @@
             <button class="btn btn-danger" data-action="{{ route('blog.destroy', $post->id) }}" data-name="{{ $post->title }}" data-toggle="modal" data-target="#confirm-delete">
                 <i class="glyphicon glyphicon-trash"></i>
             </button>
+        @endrole    
         </td>
     </tr>
     @endforeach

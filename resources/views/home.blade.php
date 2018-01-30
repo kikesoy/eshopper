@@ -10,8 +10,12 @@
                 {{ session('status') }}
             </div>
         @endif
-
+        @role('admin')
         Panel de Administrador
+        @endrole
+        @role('usuario')
+        Panel de Creacion de Post
+        @endrole
     </div>
 </div>
 @endsection

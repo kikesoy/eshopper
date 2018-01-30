@@ -52,10 +52,10 @@ class RoleController extends Controller
       $role->save();
       //attach the selected permissions
       foreach ($request->input('permissions') as $key => $value) {
-          $role->attachPermission($value);
+          $role->givePermissionTo($value);
       }
       return redirect()->route('roles.index')
-          ->with('success','Role created successfully');
+          ->with('success','Role creado exitosamente');
   }
   /**
    * Display the specified resource.
@@ -118,7 +118,7 @@ class RoleController extends Controller
       DB::table("permission_role")->where("role_id",$id)->delete();
       //attach the new permissions to the role
       foreach ($request->input('permissions') as $key => $value) {
-          $role->attachPermission($value);
+          $role->givePermissionTo($value);
       }
       return redirect()->route('roles.index')
           ->with('success','Role updated successfully');
@@ -133,6 +133,6 @@ class RoleController extends Controller
   {
       DB::table("roles")->where('id',$id)->delete();
       return redirect()->route('roles.index')
-          ->with('success','Role deleted successfully');
+          ->with('success','Role eliminado exitosamente');
 }
 }

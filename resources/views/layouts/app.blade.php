@@ -41,6 +41,7 @@
                             <li><a href="{{ route('login') }}">Iniciar sesion</a></li>
                             {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
                         @else
+                        <li><a href="{{ route('index') }}">Volver</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -70,16 +71,18 @@
 
                     @if(!Auth::guest())
                     <div class="list-group">
+                    @role('admin')
                         <a href="{{ route('home.index') }}" class="list-group-item @if (Route::is('home.index')) active @endif">Home</a>
                         <a href="{{ route('users.index') }}" class="list-group-item @if (Route::is('users.index')) active @endif">Usuarios</a>
                         <a href="{{ route('roles.index') }}" class="list-group-item @if (Route::is('roles.index')) active @endif">Roles</a>
                         <a href="{{ route('slider.index') }}" class="list-group-item @if (Route::is('slider.index')) active @endif">Sliders</a>
-                        <a href="{{ route('blog.index') }}" class="list-group-item @if (Route::is('blog.index')) active @endif">Blog</a>
                         <a href="{{ route('comment.index') }}" class="list-group-item @if (Route::is('comment.index')) active @endif">Comentarios</a>
                         <a href="{{ route('products.index') }}" class="list-group-item @if (Route::is('products.index')) active @endif">Productos</a>
                         <a href="{{ route('review.index') }}" class="list-group-item @if (Route::is('review.index')) active @endif">Reseñas</a>
                         <a href="{{ route('category.index') }}" class="list-group-item @if (Route::is('category.index')) active @endif">Categorías</a>
                         <a href="{{ route('contact.index') }}" class="list-group-item @if (Route::is('contact.index')) active @endif">Información de Contacto</a>
+                    @endrole
+                        <a href="{{ route('blog.index') }}" class="list-group-item @if (Route::is('blog.index')) active @endif">Blog</a>
                     </div>
                     @endif
                 </div>
