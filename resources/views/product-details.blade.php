@@ -112,7 +112,7 @@
 								<img class="img-responsive" src="{{ asset('/image/products/'.$productFeatured->cover_img) }}" alt="{{$productFeatured->cover_img}}">
 									<h2>US${{ $productFeatured->price }}</h2>
 									<p>{{ $productFeatured->name }}</p>
-									<a href="{{ route('shop.details', $product->id) }}" class="btn btn-default"><i class="fa fa-plus-square-o"></i> Ver mas</a>
+									<a href="{{ route('shop.details', $product) }}" class="btn btn-default"><i class="fa fa-plus-square-o"></i> Ver mas</a>
 								</div>
 							</div>
 						</div>

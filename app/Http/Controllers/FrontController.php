@@ -112,7 +112,7 @@ class FrontController extends Controller
 
     public function productDetails($id){
         $product = Product::find($id);
-        $productsFeatured = Product::inRandomOrder()->limit(3)->get();
+        $productsFeatured = Product::inRandomOrder($id)->limit(3)->get();
         $categories = Category::orderBy('category', 'ASC')->get();
         $contactos = Contacto::orderBy('id', 'DESC')->limit(1)->get();
         $postsfooter = Blog::with('user')->orderBy('created_at', 'DESC')->limit(4)->get();
